@@ -36,6 +36,15 @@ Un kernel prende una sola griglia. Un kernel \'e8 la funzione che esegui in para
 \par
 I kernel visti fino ad ora accedono solo alla memoria device, deve restituire un void, non supporta-\par
 \par
+Lezione 3 - 14/03/2022\par
+cudaMalloc, cudaMemcpy, cudaMemset e cudaFree sono usate per allocare memoria sul device. L'allocazione sulla GPU avviene in maniera sincrona, perch\'e9 necessita di una comunicazione con la CPU.\par
+L'allocazione su host e device sono due cose distinte. Innanzitutto, su usano puntatori diversi per le diverse allocazioni (fanno riferimento a spazi di indirizzamento diversi, d'altronde sono memorie distinte). \par
+Con void*, C ci permette di fare casting da e verso ogni tipo. Alla slide 56 un esempio di corretta allocazione della memoria in wrapper di malloc.\par
+cudaMemcpy(destinazione, sorgente, numero di byte, identificatore operazione).\par
+\par
+Un blocco viene mappato su uno streaming multiprocessor. Un thread va su un core, un blocco su uno streaming multiprocessor e un grid su tutto.\par
+Una cosa interessante \'e8 che, in generale, definiamo un warp come un insieme di 32 thread (con ID consecutivi). Idealmente, questi 32 thread sono eseguiti SIMT, ovvero tutti loro eseguono la stessa istruzione.\par
+L'architettura per\'f2 tiene i warp uniti in un unico blocco. Ebbene, ogni blocco lo possiamo vedere come un insieme di warp. La corrispondenza fisica sta nel fatto che in ogni Streaming Multiprocessors ci sono 32 core (non \'e8 sempre cos\'ec per\'f2, in alcune architetture \'e8 cos\'ec). Se un blocco ha pi\'f9 warp, questi vengono schedulati (cit. Davide). \par
 \par
 \par
 \par
