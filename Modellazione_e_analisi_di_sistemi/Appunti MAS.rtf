@@ -106,7 +106,31 @@ ipotesi: f(5) = 1\par
 (Macro) Call Rule: ci serve per fare chiamate di funzione. Si scrive: r[t1, .., tn]. Se non ci sono argomenti, r[]. Significato. chiama r (una regola con parametri) con argomenti t1, ..., tn. E' proprio una chiamata di procedura. \par
 Ancora, la main rule \'e8 il punto di partenza, ed \'e8 spesso una call rule. Conviene sempre cercare di capire prima questa regola, poi tutte le altre.\par
 \par
-\par
+Lezione 4 - 14/03/2022\par
+Ricorda che uno stato \'e8 un insieme di locazioni, cio\'e8 funzioni con argomenti attuali (locazioni = cassetti).\par
+La block rule serve come costrutto per mettere in parallelo delle regole. La conditional rule serve a eseguire una regola solo se una condizione \'e8 verificata. La let serve solo ad abbreviare una formula da usare in un contesto pi\'f9 ampio. La MacroCall rule serve invece a chiamare altre regole quando ci pare (funzione). Di fatto dichiariamo la regola da qualche parte e poi la richiamiamo. Oggi completiamo la panoramica delle regole con la Seq, la forall e la choose.\par
+Seq: aggiunge sequenzialit\'e0 nelle ASM. E' una componente derivata nelle ASM. Forall: permette di applicare lo stesso comportamento a tutti gli elementi di un array. Choose: introduce non determinismo nelle ASM.\par
+Sintassi Seq:\par
+seq\par
+\tab R\par
+\tab S\par
+endseq\par
+Le regole all'interno possono essere tutte quelle che ti pare e usare costruttori di regola diversi. La differenza tra seq e modello di computazione normale nelle ASM, ovvero l'esecuzione in parallelo, \'e8 che il Seq introduce dei "microstati invisibili" tra due stati (quando passo da uno all'altro). \par
+f(5) := 2\par
+f(3) := f(5)\tab --allo stato successivo f(3) = 2\par
+E' un costrutto pericoloso, nel senso che, se abbiamo troppi seq nel nostro programma, abbiamo sbagliato qualcosa nel modello che abbiamo formulato. In generale, quindi, NON LO USARE. A meno che non ci siano situazioni limite in cui ci servono variabili temporanee, come lo swap tra due variabili. Ne vedremo un esempio dopo. In generale, comunque, il seq deve servire solo a snellire il modello quando necessario, non come "shortcut". Un esempio di seq \'e8 il fattoriale.\par
+Forall e choose hanno la stessa sintassi: forall/choose x with phi do R[x]. Nel forall, viene eseguita la regola R in parallelo per ogni x che soddisfa phi. Phi pu\'f2 anche ssere true se voglio eseguire un'operazione su tutti glie lementi del dominio. Con la choose, invece, scegliamo un elemento casuale che rispetta le condizioni phi e gli applichiamo la regola R. La choose sceglie sempre valori utili.\par
+Una ASM allora la possiamo definire come una terna (SIGMA, A, R).\par
+-Sigma: un vocabolario, dei simboli, una signature.\par
+Uno stato iniziale A per SIGMA.\par
+-Un insieme R di nomi di regole, con un nome di regola di ariet\'e0 zero, la cosiddetta "main rule", che \'e8 l'entry point per l'esecuzione della macchina, e una definizione di regola per ogni nome di regola. La semantica delle regole di transizione \'e8 data dall'insieme di tutti gli aggiornamenti.\par
+Ci \'e8 sempre stato detto che in un'algebra le funzioni non vengono n\'e9 create n\'e9 distrutte, e che gli insiemi sono rappresentati come le loro rispettive funzioni caratteristiche. Spesso, nelle computazioni, abbiamo bisogno di dire per\'f2 che un certo dominio \'e8 stato esteso o contratto (come una pila). Dobbiamo quindi modellare l'aggiunta/rimozione di qualcosa che prima non c'era. Bene, questo \'e8 possibile con una nuova regola che ci permette di estendere un dominio. Per aumentare gli elementi dei domini, abbiamo la regola:\par
+extend U with x [do] R\par
+si tratta di una regola derivata da:\par
+import x do\par
+\tab U(x) := true seq R\par
+"Scegli un elemento x da un insieme predefinito, chiamato "riserva", che \'e8 un insieme di simboli freschi. Togli x dalla riserva e aggingilo al superuniverso. Infine, esegui R." Vediamo sulle slide un esempio di operazioni sullo stack. (Nella rimozione, non facciamo garbage collection, semplicemente rendiamo l'elemento del dominio distaccato da ogni funzione, rendendolo quindi irraggiungibile).\par
+Concetto di sensore: funzioni monitorate.\par
 \par
 \par
 \par
