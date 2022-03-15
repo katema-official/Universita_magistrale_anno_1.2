@@ -34,7 +34,14 @@ Discrete event modeling: interesting things happen only in specific moments in t
 In this course, we will first build the model and then analyze the result.\par
 Question 5: what if analysis.\par
 \par
+Lezione 4 - 15/03/2022\par
 \par
+Introduction ot Probability and statistics for engineers and scientists (Sheldon M. Ross, book). Idk why it's here (even if I imagine). \par
+Discrete Event Simulation - Our first kind of approach for describing a certain environment. The connectors and inner components of the model we've seen are described as random variables for example. \par
+Recall: when handling probabilities, we first of all imagine to have a Sample Space, that is, all the possible outcomes of an experiment. An Event, instead, is a particular outcome (or a set of outcomes) of the Sample Space. Also the ideas of Complement of an Event, union and intersection of sets and mutually excluusive events are important for probability and statistics. Two events are mutually exclusive if their intersection is empty. If some events are mutually exclusive events, then the probability of their union is the sum of their probabilities.\line Conditional probability: P(A|B) = probability of A to happen knowing B happened before. It is defined as the probability of A and B happening divided by the probability of B happening. \line Also, P(A) = P(A|B)P(B) + P(A|notB)P(notB). The conditioning events (in this case, B and notB) MUST be such that the sum of their probabilities is one, and they ALL must be mutually exclusive.\par
+y=f(x). For a modeler, x is input data, while y is an abstraction of the process modeled by f().\par
+Random variables: say you have an experiment, whose output is X. X is a variable, assuming to contain the result of your experiment. If the experiment involves some stochastic behavior, the content of X will always be uncertain. X, then, is called random varibale, that can be discrete or continuous. It can be a single outcome or a set of outcomes. \par
+Cumulative Distribution Function: a function F(x) = P(X <= x). [Cumulative because the probabilities sum up, they cumulate!!!]. If X is discrete, we can define another function, the Probability Mass Function: p(x) = P(X = x). The sum of all p(x_i) for all i is 1. In the case of a continuous X variable, we have a (non negative) Probability Density Function such that, for C in R, P(X belongs to C) = Integrale su C di F(x) dx.\par
 \par
 \par
 \par
