@@ -34,7 +34,7 @@ signature:
 	e poi aggiornarla azionando il condizionatore, ma dopo
 	qualche esecuzione fallimentare ho cercato sulla documentazione
 	e ho trovato questo:
-	'It is not supported by the current simulator: it
+	'(Shared) It is not supported by the current simulator: it
 	could be implemented by using a monitored
 	function to get the value from the user and a
 	controlled function to store it so it can be used

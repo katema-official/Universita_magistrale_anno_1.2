@@ -9,10 +9,13 @@ import StandardLibrary
 //-un numero massimo di posti disponibili nel parcheggio.
 //"Siamo in un parcheggio..."
 
+//ci può essere un aggiornamento inconsistente se, nello stesso
+//passo, una macchina entra e l'altra esce. Al momento
+//non saprei come risolvere
 signature:
 	//DOMAINS
 	enum domain Color = {GREEN | RED}
-	//enum domain Camera = {ENTRANCE | EXIT}
+	enum domain Camera = {ENTRANCE | EXIT}
 	
 	//FUNCTIONS
 	//nello stato iniziale, sarà l'utente a dirmi
@@ -20,11 +23,7 @@ signature:
 	monitored maxInit: Integer
 	controlled max: Integer
 	//le videocamere sono segnali che provengono dall'ambiente
-	monitored entrance: Boolean	//da cambiare
-	monitored exit: Boolean
-	//monitored videocamera_f: Camera -> Boolean (Volevo farla
-	//così ma non capisco se o come si può fare)
-	//il semaforo è una cosa che controlla il sistema
+	monitored videocamera_f: Camera -> Boolean 
 	controlled semaphore: Color
 	//mi serve un counter per le macchine presenti
 	controlled cars: Integer
@@ -44,7 +43,7 @@ definitions:
 		//mettendole in parallelo questo comportamento lo si avrebbe
 		//in due stati del sistema distinti. Lo stesso discorso
 		//vale per la regola di uscita
-		if semaphore = GREEN and entrance = true and cars < max then
+		if semaphore = GREEN and videocamera_f(ENTRANCE) = true and cars < max then
 			seq
 				cars := cars + 1
 				
@@ -56,7 +55,7 @@ definitions:
 			
 		
 	rule r_uscitaMacchina = 
-		if exit = true then
+		if videocamera_f(EXIT) = true then
 			seq
 				cars := cars - 1
 				
@@ -79,4 +78,4 @@ default init s0:
 	function max = maxInit
 	function cars = 0
 	function semaphore = GREEN
-	//function videocamera_f[($ENTRANCE in Camera)] = false
+	function videocamera_f($c in Camera) = false
