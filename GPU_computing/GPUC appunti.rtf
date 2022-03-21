@@ -46,6 +46,13 @@ Un blocco viene mappato su uno streaming multiprocessor. Un thread va su un core
 Una cosa interessante \'e8 che, in generale, definiamo un warp come un insieme di 32 thread (con ID consecutivi). Idealmente, questi 32 thread sono eseguiti SIMT, ovvero tutti loro eseguono la stessa istruzione.\par
 L'architettura per\'f2 tiene i warp uniti in un unico blocco. Ebbene, ogni blocco lo possiamo vedere come un insieme di warp. La corrispondenza fisica sta nel fatto che in ogni Streaming Multiprocessors ci sono 32 core (non \'e8 sempre cos\'ec per\'f2, in alcune architetture \'e8 cos\'ec). Se un blocco ha pi\'f9 warp, questi vengono schedulati (cit. Davide). \par
 \par
+Lezione 4 - 21/03/2022\par
+Ci sono operazioni atomiche in CUDA che eseguono solo operazioni matematiche, ma senza interruzione da parte di altri thread. Nel caso del calcolo di istogrammi di immagini, le operazioni atomiche sono utili.\par
+Si pu\'f2 usare python per programmare CUDA usando dei decoratori, che portano il codice dall'interprete python al compilatore CUDA. I kernel vengono scritti in Numba, che si appoggia su NumPy, libreria matematica estremamente efficiente. Gli array numPy vengono trasferiti automaticamente da CPU a GPU. \par
+JIT compiler: siamo dotati di uno strumento che fa interpretazione in tempo reale. Nel nostro caso, questo vuol dire che, se l'interprete trova decoratori particolari nel parsing del file, fa cose diverse, ovvero nel nostro caso cambiare ad esempio il compilatore usato. Numba si appoggia a un compilatore C e il compilatore cuda nvcc. Per il codice non relativo alla GPU, si usa LLVM. Numba \'e8 improntato all'uso di librerie come Numpy. \par
+Il decoratore @numba.jit praticamente prende la funzione e la trasforma in un eseguibile (binario), che viene cachato e poi usato. Serve a compilare una funzione come se fosse in C (noi per\'f2 non veniamo nulla, \'e8 tutto gestito a runtime da python).\par
+A noi interessa il backend per CUDA, dove usiamo semplicemente @guda.jit (sottopacchetto di CUDA) come decoratore. Quando decoro una function in questo modo, sono in grado di interpretarla come kernel. I kernel si lanciano come kernel[nBlocks, nThreads](args). Come al solito:\line I kernel non possono restituire nulla.\line Se vogliamo un risultato, dobbiamo passargli un array che lo conservi\par
+La prima analisi delle performance non conta dato che c'\'e8 anche la compilazione.\par
 \par
 \par
 \par
