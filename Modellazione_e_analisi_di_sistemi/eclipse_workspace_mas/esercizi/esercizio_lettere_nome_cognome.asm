@@ -1,5 +1,3 @@
-// a simple example with a tic tac toe game
-
 asm esercizio_lettere_nome_cognome
 
 import StandardLibrary

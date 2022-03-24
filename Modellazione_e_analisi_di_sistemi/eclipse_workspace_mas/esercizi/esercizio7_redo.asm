@@ -1,22 +1,3 @@
-//abbiamo:
-//-un controllore che manda segnali a
-//-un condizionatore
-//-due fasi della giornata da modellare
-//-una variabile che ci dice la temperatura corrente
-//-una variabile che ci dice la temperatura ambiente
-//-una variabile che ci dice la temperatura minima
-//-forse una variabile aggiuntiva che modelli la volontà
-//dell'utente di aggiornare o la temperatura ambiente
-//o la temperatura minima? In realtà non ce ne sarebbe bisogno,
-//ma la aggiungerò lo stesso per fare in modo che, durante
-//l'esecuzione del modello, ad ogni passo di evoluzione venga
-//prima chiesto se si vuole aggiornare la temperatura richiesta.
-//Se la rispostà è affermativa, tale temperatura verrà chiesta
-//in input. Altrimenti, non verrà chiesto altro all'utente (lo faccio
-//per evitare bloating di input insomma, altrimenti, per specificare
-//che non voglio cambiare la temperatura, ad ogni passo dovrei fornire
-//come input il valore precedente)
-
 asm esercizio7_redo
 
 import StandardLibrary
@@ -31,7 +12,7 @@ signature:
 	monitored fault: Boolean
 	//le varie temperature
 	
-	/*ATTENZIONE: avrei voluto rendere current_t shared, visto
+	/*ATTENZIONE: avrei voluto rendere "t" shared, visto
 	che vorrei sapere la temperatura corrente dall'ambiente
 	e poi aggiornarla azionando il condizionatore, ma dopo
 	qualche esecuzione fallimentare ho cercato sulla documentazione
@@ -44,11 +25,6 @@ signature:
 	
 	monitored t_input: Temperature -> Integer
 	controlled t: Temperature -> Integer
-	//ma non riesco a capire come scriverle in modo tale
-	//che mi vengano accettate dal compilatore. O meglio,
-	//vorrei inizializzare questi valori, ma non capisco
-	//come fare.
-	
 	monitored update_button: Boolean
 	
 
