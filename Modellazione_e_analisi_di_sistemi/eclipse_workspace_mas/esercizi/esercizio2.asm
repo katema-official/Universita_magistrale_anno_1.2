@@ -1,20 +1,17 @@
-// a simple example with a tic tac toe game
-
 asm esercizio2
 
 import StandardLibrary
 
 signature:
 	//DOMINI
-	abstract domain Pos
-	domain Sizes subsetof Integer
-	abstract domain Elem
+	dynamic abstract domain Pos
+	dynamic abstract domain Elem
 	
 	//FUNZIONI
 	static k: Integer
 	monitored insert_rear: Elem
 	monitored delete_front: Boolean
-	controlled size: Sizes
+	controlled size: Integer
 	controlled next: Pos -> Pos
 	controlled prec: Pos -> Pos
 	controlled head: Pos
@@ -22,12 +19,8 @@ signature:
 	controlled content: Pos -> Elem
 	
 definitions:
-	// DOMAIN DEFINITIONS
-	domain Sizes = {0:k}
-
 	// FUNCTION DEFINITIONS
 	function k = 10
-	
 	
 	// RULE DEFINITIONS
 	rule r_insert =
@@ -39,12 +32,12 @@ definitions:
 					tail := $p
 				endpar
 		else
-			extend Pos with $p do
+			extend Pos with $pp do
 				par
-					content($p) := insert_rear
-					next($p) := tail
-					prec(tail) := $p
-					tail := $p
+					content($pp) := insert_rear
+					next($pp) := tail
+					prec(tail) := $pp
+					tail := $pp
 				endpar
 		endif
 
