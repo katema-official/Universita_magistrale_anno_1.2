@@ -18,6 +18,9 @@ signature:
 	controlled tail: Pos
 	controlled content: Pos -> Elem
 	
+	static e1: Elem
+	static e2: Elem
+	
 definitions:
 	// FUNCTION DEFINITIONS
 	function k = 10
