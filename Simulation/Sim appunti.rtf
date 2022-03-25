@@ -61,6 +61,12 @@ Dario Malchiodi's "Simulation Book" is the reference. Why are we so concerned ab
 def middle_square_generator(seed=1461, n=1):\line\tab if (n==1): return(seed)\line\tab curr_val = seed\line\tab v = list(range(n))\line\tab for i in range(n):\line\tab\tab v[i] = curr_val\line\tab\tab curr_val = int(((curr_val ** 2) % (10 ** 6))) // 100\line\tab return v\par
 Tutorial on agent based modeling (friday).\par
 \par
+Lezione 7 - 25/03/2022\par
+Today we'll start some tutorials on the use of descriptive modeling. Together with it, we'll take care of the use of a real world simulation software: Anylogic. We'll cover the simulation paradigms covered in the first lesson by this examples developed together, in this professional software. \line Anylogic can be used as a development environment and middleware (?). \par
+Timescale we expect our model to have: resolution of our model.\line Situation we want to model: technology company\line Which descriptive paradigm should we use? It sounds reasonable to have stocastic elements in our model. A random variable that can tell us the expected value of the ADS we need to use? boh.\line Paradigm selection: very difficult at the beginning. It depends on the data we have at our disposal. We could model individuals that interact with each other: this is agend based modeling. So we want to model the environment/logic in which the agents act and the agends themselves. \line First of all, we should define the agent types in our system. The main can be thought as the environment agent of our model. \line With 10% probability, our individuals will start considering the corporate technology. \line Layout type: random. Place the individuals randomly on the assigned space.\line Trigger by RATE: how anylogic handles transitions in a state machine by random chance. It's the probabilty that an individual will fire that transition. It can be seen also asa the number of times the transition is fired each (day/second/week...). If it's below one, it's a chance.\par
+Control space (in java code): suggestions and auto completions.\par
+\par
+\par
 \par
 \par
 \par
