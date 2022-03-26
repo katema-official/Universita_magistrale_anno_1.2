@@ -5,60 +5,51 @@ import StandardLibrary
 signature:
 	//DOMINI
 	enum domain Phase = {DAY | NIGHT}
-	enum domain Temperature = {CURRENT | AMBIENT | MINIMUM}
+	enum domain Temperature = {CURRENT | AMBIENT | MINIMUM | INPUT}
 	//FUNZIONI
 	//controllore che rappresenta il momento della giornata
 	monitored controller: Phase
 	monitored fault: Boolean
 	//le varie temperature
-	
-	/*ATTENZIONE: avrei voluto rendere "t" shared, visto
-	che vorrei sapere la temperatura corrente dall'ambiente
-	e poi aggiornarla azionando il condizionatore, ma dopo
-	qualche esecuzione fallimentare ho cercato sulla documentazione
-	e ho trovato questo:
-	'(Shared) It is not supported by the current simulator: it
-	could be implemented by using a monitored
-	function to get the value from the user and a
-	controlled function to store it so it can be used
-	by the machine.' Farò così quindi*/
-	
 	monitored t_input: Temperature -> Integer
 	controlled t: Temperature -> Integer
-	monitored update_button: Boolean
-	
+	monitored user_choice: Boolean
+	//il condizionatore
+	controlled air_conditioner: Boolean //true = acceso, false = spento
 
 definitions:
 
 	//REGOLE
 	rule r_day =
 		par
-			if update_button = true then
-				t(AMBIENT) := t_input(AMBIENT)	
+			if user_choice = true then
+				t(AMBIENT) := t_input(INPUT)	
 			endif
 			
-			seq	//se non usassi seq avrei un aggiornamento inconsistente.
-				//inoltre l'uso del seq è dovuto al fatto che non posso
-				//usare una variabile shared
-				t(CURRENT) := t_input(CURRENT)
-				if t(CURRENT) > t(AMBIENT) then
-					t(CURRENT) := t(AMBIENT)	//troppo semplice? Non so
+			let ($cur = t_input(CURRENT)) in
+				if $cur > t(AMBIENT) and air_conditioner = false then
+					air_conditioner := true
+				else if $cur <= t(AMBIENT) and air_conditioner = true then
+						air_conditioner := false
+					endif
 				endif
-			endseq
+			endlet
 		endpar
 	
 	rule r_night =
 		par
-			if update_button = true then
-				t(MINIMUM) := t_input(MINIMUM)		
+			if user_choice = true then
+				t(MINIMUM) := t_input(INPUT)		
 			endif
 			
-			seq
-				t(CURRENT) := t_input(CURRENT)
-				if t(CURRENT) > t(MINIMUM) then
-					t(CURRENT) := t(MINIMUM)
+			let ($cur = t_input(CURRENT)) in
+				if $cur > t(MINIMUM) and air_conditioner = false then
+					air_conditioner := true
+				else if $cur <= t(MINIMUM) and air_conditioner = true then
+						air_conditioner := false
+					endif
 				endif
-			endseq
+			endlet
 		endpar
 	
 	rule r_condizionatore = 
@@ -77,9 +68,10 @@ definitions:
 // INITIAL STATE
 default init s0:
 	function controller = DAY
-	function update_button = false
+	function user_choice = false
 	function fault = false
 	function t($temp in Temperature) = switch($temp)
 										case AMBIENT: 26
 										case MINIMUM: 28
 										endswitch
+	function air_conditioner = false
