@@ -27,7 +27,7 @@ signature:
 	controlled count: Integer
 	
 	derived areBrothers: Prod(Persons, Persons) -> Boolean
-	derived giveBrothers: Persons -> Seq(Persons)
+	derived giveBrothers: Persons -> Powerset(Persons)
 	controlled listOfBrothers: Powerset(Persons)
 	
 definitions:
@@ -38,8 +38,21 @@ definitions:
 		father($p1) = father($p2) and mother($p1) = mother($p2)
 	
 	function giveBrothers($p in Persons) =
-		Seq(forall ($x in Persons) with (($x = $p) or
-			(father($x) != father($p) and mother($x) != mother($p))) )
+		seq
+			$tmp = Powerset(Persons)
+			
+			forall ($x in Persons) with (($x = $p) or 
+				(father($x) != father($p) and mother($x) != mother($p))
+			) do
+				$tmp := excluding($tmp, $x)
+				
+			if true then $tmp
+		endseq
+		
+	
+		//Seq(forall ($x in Persons) with (($x = $p) or
+		//	(father($x) != father($p) and mother($x) != mother($p))) )
+			
 		//forall $x in Persons with (($x = $p) or (father($x) != father($p) and
 		//	mother($x) != mother($p))) do
 		//		listOfBrothers := excluding(listOfBrothers, $x)

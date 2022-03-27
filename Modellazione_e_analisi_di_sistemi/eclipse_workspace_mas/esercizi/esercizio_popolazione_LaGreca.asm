@@ -41,6 +41,8 @@ signature:
 	//bambino appena nato è vivo, non vedo altra soluzione se non questa)
 	controlled alive: Persons -> Boolean //true = vivo, false = morto
 
+	//solo per debug (per vedere insomma quanta gente è viva in un dato
+	//momento), si può togliere tranquillamente
 	controlled count: Integer
 	
 definitions:
