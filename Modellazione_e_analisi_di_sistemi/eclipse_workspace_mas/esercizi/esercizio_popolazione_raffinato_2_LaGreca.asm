@@ -1,6 +1,6 @@
 // a simple example with a tic tac toe game
 
-asm esercizio_popolazione_raffinato_LaGreca
+asm esercizio_popolazione_raffinato_2_LaGreca
 
 import StandardLibrary
 
@@ -11,6 +11,8 @@ signature:
 	// FUNCTIONS
 	static adamo: Persons
 	static eva: Persons
+	static adamo2: Persons
+	static eva2: Persons
 	
 	//funzioni per sapere il sesso, l'età, la madre e il padre di un individuo
 	controlled sex: Persons -> Sex
@@ -34,10 +36,10 @@ definitions:
 
 	// FUNCTION DEFINITIONS
 	function areBrothers($p1 in Persons, $p2 in Persons) =
-		father($p1) = father($p2) and mother($p1) = mother($p2)
+		$p1 != $p2 and father($p1) = father($p2) and mother($p1) = mother($p2)
 	
 	function giveBrothers($p in Persons) =
-		{$x in Persons | areBrothers($p, $x) and $p != $x : $x}
+		{$x in Persons | areBrothers($p, $x) : $x}
 	
 	// RULE DEFINITIONS
 	rule r_die($p in Persons) =
@@ -136,15 +138,13 @@ definitions:
 	//per ogni individuo, il padre è diverso dalla madre (non vale per adamo ed eva)
 	invariant over father, mother:
 		(forall $x in Persons with 
-			($x != adamo and $x != eva) implies father($x) != mother($x)
+			($x != adamo and $x != eva and $x != adamo2 and $x != eva2) 
+			implies father($x) != mother($x)
 		)
-		
-	//modello R2: i genitori di tutti sono adamo ed eva
+
+	//Modello R4: i genitori di ogni persona non possono essere fratelli
 	invariant over father, mother:
-		(forall $x in Persons with 
-			($x != adamo and $x != eva) implies father($x) = adamo 
-			and mother($x) = eva
-		)
+		(forall $x in Persons with areBrothers(father($x), mother($x)) = false)
 
 	// MAIN RULE
 	main rule r_Main =
@@ -156,26 +156,38 @@ default init r2:
 	function sex($p in Persons) = switch($p)
 									case adamo: MALE
 									case eva: FEMALE
+									case adamo2: MALE
+									case eva2: FEMALE
 								endswitch
 
 	function age($p in Persons) = switch($p)
 									case adamo: 20
 									case eva: 20
+									case adamo2: 20
+									case eva2: 20
 								endswitch
 	
 	function mother($p in Persons) = switch($p)
 									case adamo: adamo
 									case eva: eva
+									case adamo2: adamo2
+									case eva2: eva2
 								endswitch
 	
 	function father($p in Persons) = switch($p)
 									case adamo: adamo
 									case eva: eva
+									case adamo2: adamo2
+									case eva2: eva2
 								endswitch
 	
 	function alive($p in Persons) = switch($p)
 									case adamo: true
 									case eva: true
+									case adamo2: true
+									case eva2: true
 								endswitch
+								
 	
-	function count = 2
+	
+	function count = 4

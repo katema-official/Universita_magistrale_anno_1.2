@@ -116,8 +116,9 @@ definitions:
 	//l'età dei figli è inferiore a quella dei genitori (se questi sono vivi)
 	invariant over age, father, mother:
 		(forall $x in Persons with 
-			alive(mother($x)) implies age($x) <= age(mother($x)) and 
-			alive(father($x)) implies age($x) <= age(father($x))
+			alive($x) implies
+			((alive(mother($x)) implies age($x) <= age(mother($x))) and 
+			(alive(father($x)) implies age($x) <= age(father($x))))
 		)
 	
 	//i bambini appena nati sono vivi
