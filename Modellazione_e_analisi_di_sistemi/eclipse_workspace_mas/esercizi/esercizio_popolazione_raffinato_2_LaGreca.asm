@@ -79,7 +79,7 @@ definitions:
 		
 		if sex($mom) = FEMALE and age($mom) >= 13 and age($mom) <= 50 then
 			choose $m in {1:5} with true do
-				if $m = 1 then
+				if $m = 1 then	//la choose fa implicitamente questo controllo!
 					if (exist $male in Persons with sex($male) = MALE 
 						and age($male) >= 13 
 						and alive($male)
