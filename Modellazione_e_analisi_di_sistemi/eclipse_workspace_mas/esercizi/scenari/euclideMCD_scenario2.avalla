@@ -1,0 +1,13 @@
+scenario euclideMCD_scenario2.avalla
+
+load ../euclideMCD.asm
+
+
+invariant inv1: numA >= numB;
+
+exec numA := 24;
+exec numB := 6;
+
+step until numA = numB;
+
+check numA = 6;
