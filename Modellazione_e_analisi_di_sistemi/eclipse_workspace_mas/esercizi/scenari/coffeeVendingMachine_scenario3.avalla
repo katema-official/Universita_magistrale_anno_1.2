@@ -1,0 +1,27 @@
+scenario coffeeVendingMachine_scenario3.avalla
+
+load ../coffeeVendingMachine.asm
+
+//se chiedo una bevanda quando questa non
+//è più disponibile, posso star tranquillo
+//che la macchina non la eroghi comunque
+//e che non mi mangi la monetina?
+
+exec available(MILK) := 1;
+set insertedCoin := HALF;
+step
+
+check coins = 1;
+check available(MILK) = 0;
+
+set insertedCoin := HALF;
+step
+
+check coins = 1;
+check available(MILK) = 0;
+
+
+
+
+
+

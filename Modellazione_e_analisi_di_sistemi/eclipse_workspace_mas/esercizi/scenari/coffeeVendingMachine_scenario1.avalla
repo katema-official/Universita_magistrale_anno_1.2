@@ -1,0 +1,36 @@
+scenario coffeeVendingMachine_scenario1.avalla
+
+load ../coffeeVendingMachine.asm
+
+//se chiedo del latte, mi viene dato?
+//e lo stato interno della macchina
+//cambia correttamente?
+set insertedCoin := HALF;
+step
+
+check coins = 1;
+check available(MILK) = 9;
+check available(COFFEE) = 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

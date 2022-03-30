@@ -10,23 +10,23 @@ check moneyLeft = 300;
 check atmState = AWAITCARD;
 
 //autenticazione card1
-exec insertedCard := card1;
+set insertedCard := card1;
 step
 check atmState = AWAITPIN;
-exec insertedPin := 1;
+set insertedPin := 1;
 step
 check atmState = CHOOSE;
 
 //cerchiamo di prelevare 50 euro
-exec selectedService := WITHDRAWAL;
+set selectedService := WITHDRAWAL;
 step
 check atmState = CHOOSEAMOUNT;
 
-exec standardOrOther := STANDARD;
+set standardOrOther := STANDARD;
 step
 check atmState = STANDARDAMOUNTSELECTION;
 
-exec insertMoneySizeStandard := 50;
+set insertMoneySizeStandard := 50;
 step 
 check atmState = STANDARDAMOUNTSELECTION;
 check outMess = "Not enough money in your account";
@@ -35,7 +35,7 @@ check moneyLeft = 300;
 
 //ora preleviamo 10 euro
 
-exec insertMoneySizeStandard := 10;
+set insertMoneySizeStandard := 10;
 step
 check atmState = AWAITCARD;
 check balance(card1) = 0;

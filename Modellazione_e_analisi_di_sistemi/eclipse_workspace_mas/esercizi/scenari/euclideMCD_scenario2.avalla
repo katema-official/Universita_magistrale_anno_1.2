@@ -5,8 +5,11 @@ load ../euclideMCD.asm
 
 invariant inv1: numA >= numB;
 
-exec numA := 24;
-exec numB := 6;
+exec 
+	par
+		numA := 24
+		numB := 6
+	endpar;
 
 step until numA = numB;
 

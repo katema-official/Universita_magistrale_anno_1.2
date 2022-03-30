@@ -1,0 +1,50 @@
+scenario coffeeVendingMachine_scenario2.avalla
+
+load ../coffeeVendingMachine.asm
+
+//se chiedo una bevanda quando non c'è più
+//spazio per le monete, posso star sicuro
+//che la macchina non accetti quella moneta,
+//e che la bevanda non venga erogata?
+
+exec coins := 24;
+set insertedCoin := ONE;
+step
+
+check coins = 25;
+check available(COFFEE) = 9;
+check available(MILK) = 10;
+
+set insertedCoin := ONE;
+step
+
+check coins = 25;
+check available(COFFEE) = 9;
+check available(MILK) = 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

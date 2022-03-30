@@ -10,50 +10,50 @@ exec moneyLeft := 1200;
 check atmState = AWAITCARD;
 
 //inserimento carta
-exec insertedCard := card1;
+set insertedCard := card1;
 step
 check atmState = AWAITPIN;
 
 //inserimento pin
-exec insertedPin := 1;
+set insertedPin := 1;
 step
 check atmState = CHOOSE;
 
 //selezione tipo di prelievo
-exec selectedService := WITHDRAWAL;
+set selectedService := WITHDRAWAL;
 step
 check atmState = CHOOSEAMOUNT;
 
-exec standardOrOther := STANDARD;
+set standardOrOther := STANDARD;
 step
 check atmState = STANDARDAMOUNTSELECTION;
 
-exec insertMoneySizeStandard := 50;
+set insertMoneySizeStandard := 50;
 step 
 check atmState = AWAITCARD;
 check balance(card1) = 50;
 
 
 //inserimento carta
-exec insertedCard := card3;
+set insertedCard := card3;
 step
 check atmState = AWAITPIN;
 
 //inserimento pin
-exec insertedPin := 3;
+set insertedPin := 3;
 step
 check atmState = CHOOSE;
 
 //selezione tipo di prelievo
-exec selectedService := WITHDRAWAL;
+set selectedService := WITHDRAWAL;
 step
 check atmState = CHOOSEAMOUNT;
 
-exec standardOrOther := STANDARD;
+set standardOrOther := STANDARD;
 step
 check atmState = STANDARDAMOUNTSELECTION;
 
-exec insertMoneySizeStandard := 200;
+set insertMoneySizeStandard := 200;
 step 
 check atmState = AWAITCARD;
 check balance(card3) = 100;
