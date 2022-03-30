@@ -1,0 +1,45 @@
+scenario ATM_scenario3.avalla
+
+load ../ATM.asm
+
+exec balance(card1) := 10;
+check balance(card1) = 10;
+exec moneyLeft := 300;
+check moneyLeft = 300;
+
+check atmState = AWAITCARD;
+
+//autenticazione card1
+exec insertedCard := card1;
+step
+check atmState = AWAITPIN;
+exec insertedPin := 1;
+step
+check atmState = CHOOSE;
+
+//cerchiamo di prelevare 50 euro
+exec selectedService := WITHDRAWAL;
+step
+check atmState = CHOOSEAMOUNT;
+
+exec standardOrOther := STANDARD;
+step
+check atmState = STANDARDAMOUNTSELECTION;
+
+exec insertMoneySizeStandard := 50;
+step 
+check atmState = STANDARDAMOUNTSELECTION;
+check outMess = "Not enough money in your account";
+check balance(card1) = 10;
+check moneyLeft = 300;
+
+//ora preleviamo 10 euro
+
+exec insertMoneySizeStandard := 10;
+step
+check atmState = AWAITCARD;
+check balance(card1) = 0;
+check moneyLeft = 290;
+
+
+

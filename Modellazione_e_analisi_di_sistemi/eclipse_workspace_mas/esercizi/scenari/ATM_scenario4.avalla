@@ -1,0 +1,71 @@
+scenario ATM_scenario4.avalla
+
+load ../ATM.asm
+
+
+
+invariant inv_900: moneyLeft >= 900;
+
+exec moneyLeft := 1200;
+check atmState = AWAITCARD;
+
+//inserimento carta
+exec insertedCard := card1;
+step
+check atmState = AWAITPIN;
+
+//inserimento pin
+exec insertedPin := 1;
+step
+check atmState = CHOOSE;
+
+//selezione tipo di prelievo
+exec selectedService := WITHDRAWAL;
+step
+check atmState = CHOOSEAMOUNT;
+
+exec standardOrOther := STANDARD;
+step
+check atmState = STANDARDAMOUNTSELECTION;
+
+exec insertMoneySizeStandard := 50;
+step 
+check atmState = AWAITCARD;
+check balance(card1) = 50;
+
+
+//inserimento carta
+exec insertedCard := card3;
+step
+check atmState = AWAITPIN;
+
+//inserimento pin
+exec insertedPin := 3;
+step
+check atmState = CHOOSE;
+
+//selezione tipo di prelievo
+exec selectedService := WITHDRAWAL;
+step
+check atmState = CHOOSEAMOUNT;
+
+exec standardOrOther := STANDARD;
+step
+check atmState = STANDARDAMOUNTSELECTION;
+
+exec insertMoneySizeStandard := 200;
+step 
+check atmState = AWAITCARD;
+check balance(card3) = 100;
+
+check moneyLeft = 950;
+
+
+
+
+
+
+
+
+
+

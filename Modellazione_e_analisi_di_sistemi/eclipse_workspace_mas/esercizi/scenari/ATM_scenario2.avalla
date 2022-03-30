@@ -1,0 +1,17 @@
+scenario ATM_scenario2.avalla
+
+load ../ATM.asm
+
+check atmState = AWAITCARD;
+
+//inserimento carta
+exec insertedCard := card1;
+step
+check atmState = AWAITPIN;
+
+//inserimento pin ERRATO
+exec insertedPin := 4;
+step
+check atmState = AWAITCARD;
+
+
