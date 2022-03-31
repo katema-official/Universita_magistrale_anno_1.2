@@ -1,68 +1,102 @@
-// a simple example with a tic tac toe game
-
 asm SluiceGate
 
 import StandardLibrary
 
 signature:
 	// DOMAINS
+	abstract domain Position
 	domain Minutes subsetof Integer
-	enum domain PhaseDomain = {FULLYCLOSED | FULLYOPEN}
-	... //un secondo...
+	enum domain PhaseDomain = {FULLYCLOSED | OPENING | FULLYOPENED | CLOSING}
+	enum domain DirectionDomain = {CLOCKWISE | ANTICLOCKWISE}
+	enum domain MotorDomain = {ON | OFF}
+	
+	
 	// FUNCTIONS
-	controlled board: Prod(Coord, Coord) -> Sign
-	controlled status: Status
-	monitored userChoiceR: Coord //row chosen by the user
-	monitored userChoiceC: Coord //column chosen by the user
-	derived winner: Sign -> Boolean
-	derived endOfGame: Boolean
+	controlled dir: DirectionDomain
+	controlled motor: MotorDomain
+	static openPeriod: Minutes
+	static closedPeriod: Minutes
+	static top: Position
+	static bottom: Position
+	controlled phase: PhaseDomain
+	monitored passed: Minutes -> Boolean
+	monitored event: Position -> Boolean
+	//passed(10) e passed(170) indicano se è trascorso l'intervallo di tempo
+	//in cui la saracinesca deve essere completamente aperta e, rispettivamente,
+	//completamente chiusa
 
 definitions:
 	// DOMAIN DEFINITIONS
-	domain Coord = {1 : 3}
+	domain Minutes = {10, 170}
 
 	// FUNCTION DEFINITIONS
-	function winner($s in Sign) =
-		(exist $r in Coord with (forall $c in Coord with board($r, $c) = $s)) or
-		(exist $c2 in Coord with (forall $r2 in Coord with board($r2, $c2) = $s)) or
-		(forall $d in Coord with board($d, $d) = $s) or
-		(forall $d1 in Coord with board($d1, 4 - $d1) = $s)
+	function openPeriod = 10
+	function closedPeriod = 170
 
-	function endOfGame =
-		(exist $s in Sign with winner($s)) or
-		(forall $r in Coord, $c in Coord with isDef(board($r, $c)))
-
-	// RULE DEFINITIONS
-	rule r_moveUser =
-		let ($r = userChoiceR, $c = userChoiceC) in
-			if(isUndef(board($r, $c))) then
-				par
-					board($r, $c) := CROSS
-					status := TURN_PC
-				endpar
-			endif
-		endlet
-
-	rule r_movePC =
-		choose $r in Coord, $c in Coord with isUndef(board($r, $c)) do
-			par
-				board($r, $c) :=  NOUGHT
-				status := TURN_USER
-			endpar
-
+	//RULES
+	rule r_start_to_raise =
+		par
+			dir := CLOCKWISE
+			motor := ON
+		endpar
+	
+	rule r_start_to_lower =
+		par
+			dir := ANTICLOCKWISE
+			motor := ON
+		endpar
+		
+	rule r_stop_motor =
+		motor := OFF
+		
 	// INVARIANTS
-	invariant inv_win over winner:  not(winner(CROSS) and winner(NOUGHT))
-
-	// MAIN RULE
+	invariant over phase, motor:
+		(((phase = FULLYCLOSED or phase = FULLYOPENED) and motor = OFF) or
+		((phase = OPENING or phase = CLOSING) and motor = ON))
+	
+	//MAIN RULE
 	main rule r_Main =
-		if not(endOfGame) then
-			if status = TURN_USER then
-				r_moveUser[]
-			else
-				r_movePC[]
+		par
+			if(phase = FULLYCLOSED) then
+				if(passed(closedPeriod)) then
+					par
+						r_start_to_raise[]
+						phase := OPENING
+					endpar
+				endif
 			endif
-		endif
+			
+			if(phase = OPENING) then
+				if(event(top)) then
+					par
+						r_stop_motor[]
+						phase := FULLYOPENED
+					endpar
+				endif
+			endif
+			
+			if(phase = FULLYOPENED) then
+				if(passed(openPeriod)) then
+					par
+						r_start_to_lower[]
+						phase := CLOSING
+					endpar
+				endif
+			endif
+			
+			if(phase = CLOSING) then
+				if(event(bottom)) then
+					par
+						r_stop_motor[]
+						phase := FULLYCLOSED
+					endpar
+				endif
+			endif
+			
+		endpar
 
 // INITIAL STATE
 default init s0:
-	function status = TURN_USER
+	function phase = FULLYCLOSED
+	function motor = OFF
+	function dir = ANTICLOCKWISE

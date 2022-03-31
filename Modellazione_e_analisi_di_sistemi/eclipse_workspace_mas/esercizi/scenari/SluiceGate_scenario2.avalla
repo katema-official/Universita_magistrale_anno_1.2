@@ -1,0 +1,60 @@
+scenario SluiceGate_scenario2.avalla
+
+load ../SluiceGate.asm
+
+
+
+set passed(closedPeriod) := false;
+step
+check phase = FULLYCLOSED;
+check motor = OFF;
+
+set passed(closedPeriod) := true;
+step
+check phase = OPENING;
+check motor = ON;
+
+
+set event(top) := false;
+step
+check phase = OPENING;
+check motor = ON;
+
+set event(top) := true;
+step
+check phase = FULLYOPENED;
+check motor = OFF;
+
+
+set passed(openPeriod) := false;
+step
+check phase = FULLYOPENED;
+check motor = OFF;
+
+set passed(openPeriod) := true;
+step
+check phase = CLOSING;
+check motor = ON;
+
+
+set event(bottom) := false;
+step
+check phase = CLOSING;
+check motor = ON;
+
+set event(bottom) := true;
+step
+check phase = FULLYCLOSED;
+check motor = OFF;
+
+
+
+
+
+
+
+
+
+
+
+
