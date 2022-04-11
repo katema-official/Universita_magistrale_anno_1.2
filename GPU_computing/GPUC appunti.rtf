@@ -79,7 +79,9 @@ Abbiamo gi\'e0 parlato di occupancy, ma ora la decliniamo sulle memorie. L'occup
 Arriviao a un in-depth della shared memory. Vediamo come impatta. La shared memory (SMEM) \'e8 una soft cach, in contrapposizione alle hard cache L1 e L2. Insomma, nella SMEM, accadono delle cose di cui l'hardware non \'e8 conscio. Si tratta di una memoria per elaborare dati on-chip e migliorare i pattern di accesso alla blobal memory. Se noi dobbiamo accedere pi\'f9 volte ad un dato, se lo mettiamo in memoria globale e vi accediamo pi\'f9 volte, non siamo tanto efficienti. Se mettiamo quel dato in SMEM, invece, abbiamo un dato disponibile a tutti i thread di un blocco, e vi accediamo pi\'f9 velocemente. Il vantaggio \'e8 che riduciamo di 30 volte la latenza e di 10 volte la Bandwidth. Questa SMEM \'e8 on-chip (piccola, circa 64K) e in alcune architetture condivisa con la L1 (quindi ANCORA pi\'f9 piccola). E' suddivisa in moduli della stassa ampiezza, chiamati bank (sono 32). L'ideale \'e8 prendere 32 dati dai 32 bank, un dato per bank. Se succede, bom, siamo super efficienti. La memoria shared \'e8 intesa come condivisa tra i thread di un blocco, essendo condivisa c'\'e8 bisogno di sincronizzazione tra i dati in memoria, e quindi syncthread. La SMEM dell'architettura Fermi si suddivide in blocchi da 4 byte (chiamate word), che possono contenere vari dati. Se si vuole accedere un byte, bisogna per forza "pupparsi" l'intera word. \par
 Molteplici accessi allo stesso bank vengono serializzati. L'accesso ad un singolo dato avviene invece in una sola transazione.\par
 \par
-\par
+Lezione 7 - 11/04/2022\par
+Convoluzione (dalla precedente lezione, in verit\'e0). Si tratta dela somma tra segnali di durata finita, x ed h. Il problema \'e8 che \'e8 una sommatoria pesante. Il problema del bordo a quanto pare \'e8 molto importante. \par
+GLOBAL MEMORY\par
 \par
 \par
 \par
