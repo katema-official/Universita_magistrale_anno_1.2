@@ -44,7 +44,7 @@ signature:
 	
 	derived decryptM1: Prod(Message, PriKey) -> SessionKey
 	derived decryptM2: Prod(Message, SessionKey) -> Nonce
-	derived decryptM3: Prod(Message, SessionKey) -> Prod(PubKey, Nonce)
+	derived decryptM3: Prod(Message, SessionKey) -> Prod(PubKey, Nonce)	//EncryptedNonce?
 	
 	controlled knownSessionKeys: Agent -> Seq(SessionKey)
 	
@@ -96,8 +96,8 @@ definitions:
 	
 	function decryptM2($m in Message, $k in SessionKey) =
 		let($truem = message2($m)) in
-			if(isDef($truem)) then
-				if( contains(asSet(knownSessionKeys(self)), $k) ) then
+			if(isDef($truem)) then			//Message -> Prod(Nonce, SessionKey)
+				if($k = second($truem)) then//if( contains(asSet(knownSessionKeys(self)), $k) ) then
 					first($truem)
 				endif
 			endif
@@ -141,7 +141,7 @@ definitions:
 	macro rule r_initSession = 
 		if(wishToInitiate(self)) then
 			choose $x in Agent with $x != self and wishToInitiate(self, $x) and
-				(forall $t in Traffic with (first(val($t)) and second(val($t)) = $x implies readTraffic($t) = true)) do
+				(forall $t in Traffic with (first(val($t)) = self and second(val($t)) = $x implies readTraffic($t) = true)) do
 					extend SessionKey with $sk do
 						extend Message with $m do
 							par
@@ -176,7 +176,7 @@ definitions:
 					extend Message with $m do
 						par
 							seq
-								r_encryptNonce($n, prikey(self), pubkey(self))
+								r_encryptNonce[$nonce, prikey(self), pubkey(self)]
 								message3($m) := (pubkey(self), nonceToEncryptedNonce($nonce), last(knownSessionKeys(self)))
 							endseq
 							messageType($m) := MSG3
@@ -214,6 +214,9 @@ definitions:
 // INITIAL STATE
 default init s0:
 	function genNonces($a in Agent) = {}
+	function knownSessionKeys($a in Agent) = []
 	
 	agent GoodAgent:
 		r_goodAgentProgram[]
+		
+	
