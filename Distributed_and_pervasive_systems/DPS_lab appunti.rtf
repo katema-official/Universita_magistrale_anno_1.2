@@ -20,6 +20,10 @@ We'll see wait and notify and then XML and JSON to communicate between machines.
 Let's see the java util.concurrent library. We can't use much... on the other end, we'll see how to implement the Producer-Consumer Pattern. It's a multi-process communication pattern where the producer is the entity (a thread for us) that sends some data, while the consumer is another entity that receives these data. Usually, a queue is used to transit the data. We can also have more producers and consumers.\par
 Problem: we want a common way to represent data. So, marshalling and unmarshalling. We'll see three formats to do so: XML, JSON and Protocol Buffers. XML is a very used encoding information standard. Is both human and machine readable. JSON is a more recent standard, also readable, and has replaced XML. The trasmission is also quicker. GSON can be used! toJson() and fromJson(). \par
 \par
+Lezione 3 - 29/04/2022\par
+We'll talk about protocol buffers (machine to machine communication method) and then gRPC (Remote Procedure Call) Framewoek. The Protocol Buffer mechanism has been proposed by Google, and it is more compact and quicker than XML and JSON. Datas are represented in a binary format, so it\'ecs more efficient. It's easy to use, because marshalling and unmarshalling is automatically performed. We just have to read and write the objects through the streams. We have to define a file with extension .proto, in which we have to indicate the fields of the message. Then we have to buld gradle and then it's possible to write code to send and receive messages.\line To define a message through protocol Buffer, we have- every message has fields that can be also messages. The fields are required, that is mandatory, optional, the field can be omitted, and repeated, that is the field can be repeated multiple times. \line Every field has a unique tag, that help back-compatibility and must be immutable. \par
+The files .proto go in the main directory of src, in a proto directory, and start in upper case (Actor.proto)\par
+in gRPC, we will call the asynchronous methods.\par
 \par
 \par
 \par
