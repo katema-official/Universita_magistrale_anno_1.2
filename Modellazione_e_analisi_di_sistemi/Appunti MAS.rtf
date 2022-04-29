@@ -230,8 +230,10 @@ Oggi vedremo come questi sistemi di verifica possono essere usati nell'ambito de
 Sviluppare protocolli per dispositivi IoT \'e8 difficile. Quello che si fa di solito \'e8 testing, analisi standard, etc.. Ma a volte non ci sono crittografi nel team. Il probelma \'e8: come possiamo aiutare queste persone a fare questi step "crittografici" senza avere troppo background di crittografia? Diciamo, sarebbe bello poter specificare i requisiti in modo formale. Si pu\'f2 ad esempio usare un diagramma di flusso. Oppure, usando questo tool, composto di Front-End, Linguaggio di validazione e Tool di verifica, si pu\'f2 anche costruire un modello del protocollo, che poi viene sottposoto a test di sicurezza mediante un tool di verifica.\par
 \par
 Lezione 15 - 29/04/2022\par
-\par
-\par
+Oggi vedremo l'algoritmo di model checking, che ci permetter\'e0 di verificare se una formula temporale \'e8 vera o falsa. Una formula temporale pu\'f2 contenere diversi operatori, ma quando viene applicato il model checking, sulla formula si fanno delle semplificazioni, per esempio si possono avere solo NOT e AND, e anche EX, EU e AF, etc.. Il tutto si base sulle trasformazioni in formule equivalenti. Ci possono essere esercizi in cui \'e8 chiesto di dimostrare l'equivalenza di formule. Basta applicare la definizione dei connettivi comunque.\par
+Come funziona l'algoritmo? Normalmente, abbiamo il nostro automa di kripke e una formula, e vogliamo, dato uno stato (iniziale), dimostrare se data M e s, phi \'e8 vera o falsa. Oppure possiamo dire: data la macchina e la formula, calcoliamo tutti gli stati a partire dai quali la formula \'e8 verificata. Cos\'ec facendo sapremo se la formula \'e8 vera partendo dall's specificato. \par
+Labelling Algorithm. Prende in unput un modello e una formula e restituisce un insieme di stati s in cui la formula \'e8 soddisfatta. Il nostro algoritmo prender\'e0 l'automa e lo etichetter\'e0. L'automa infatti ha stati con proposizioni. L'algoritmo insomma etichetta i vari stati con le formule minimali. Inoltre, possiamo restringere il set di operatori CTL all'insieme composto da falso, NOT, AND, AF, EU e EX.\par
+Prima dell'algoritmo, un'intuizione: guarda gli appunti.\par
 \par
 \par
 \par
