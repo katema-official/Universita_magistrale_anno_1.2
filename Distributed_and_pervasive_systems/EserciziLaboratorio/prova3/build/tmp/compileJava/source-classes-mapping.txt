@@ -1,5 +1,3 @@
-university/UniversityServer.java
- university.UniversityServer
 proto/classes/StudentOuterClass.java
  proto.classes.StudentOuterClass
  proto.classes.StudentOuterClass$Student
@@ -14,3 +12,7 @@ proto/classes/StudentOuterClass.java
  proto.classes.StudentOuterClass$Student$placeOfResidence$Builder
  proto.classes.StudentOuterClass$Student$placeOfResidenceOrBuilder
  proto.classes.StudentOuterClass$StudentOrBuilder
+university/UniversityClient.java
+ university.UniversityClient
+university/UniversityServer.java
+ university.UniversityServer
