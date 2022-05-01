@@ -1,5 +1,5 @@
 package university;
-
+//si tratta dell'esercizio 1 lezione 3, "students stat with protocol buffers"
 import proto.classes.StudentOuterClass.Student;
 
 import java.io.IOException;
