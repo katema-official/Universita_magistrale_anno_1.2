@@ -1,5 +1,7 @@
 package university;
 
+import proto.classes.StudentOuterClass.Student;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,7 +15,7 @@ public class UniversityServer {
 
         while(true) {
 
-            //Student student = Student.parseFrom(s.getInputStream());
+            Student student = Student.parseFrom(s.getInputStream());
 
         }
 

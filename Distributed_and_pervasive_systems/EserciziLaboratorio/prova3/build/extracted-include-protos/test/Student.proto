@@ -1,0 +1,24 @@
+package proto.classes;
+
+message Student{
+
+  message placeOfResidence{
+    required string country = 1;
+    required string street = 2;
+    required int32 number = 3;
+    required int32 cap = 4;
+  }
+  required string name = 1;
+  required string surname = 2;
+  required int32 yearOfBirth = 3;
+  required placeOfResidence location = 4;
+
+  message Exam{
+    required string name = 1;
+    required int32 mark = 2;
+    required string dateOfVerbalization = 3;
+  }
+
+  repeated Exam exams = 5;
+
+}

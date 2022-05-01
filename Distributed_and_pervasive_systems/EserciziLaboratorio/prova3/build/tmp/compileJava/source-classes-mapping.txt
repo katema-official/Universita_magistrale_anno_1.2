@@ -1,0 +1,16 @@
+university/UniversityServer.java
+ university.UniversityServer
+proto/classes/StudentOuterClass.java
+ proto.classes.StudentOuterClass
+ proto.classes.StudentOuterClass$Student
+ proto.classes.StudentOuterClass$Student$1
+ proto.classes.StudentOuterClass$Student$Builder
+ proto.classes.StudentOuterClass$Student$Exam
+ proto.classes.StudentOuterClass$Student$Exam$1
+ proto.classes.StudentOuterClass$Student$Exam$Builder
+ proto.classes.StudentOuterClass$Student$ExamOrBuilder
+ proto.classes.StudentOuterClass$Student$placeOfResidence
+ proto.classes.StudentOuterClass$Student$placeOfResidence$1
+ proto.classes.StudentOuterClass$Student$placeOfResidence$Builder
+ proto.classes.StudentOuterClass$Student$placeOfResidenceOrBuilder
+ proto.classes.StudentOuterClass$StudentOrBuilder
