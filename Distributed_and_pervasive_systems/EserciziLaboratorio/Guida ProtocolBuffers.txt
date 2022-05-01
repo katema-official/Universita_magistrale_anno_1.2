@@ -1,0 +1,24 @@
+Breve riassunto di quello che ho fatto per creare un progetto coi ProtocolBuffers:
+
+1) ho copiato il loro file build.gradle
+2) nella directory gradle/wrapper ho editato il file gradle-wrapper.properties.
+La terza linea è ora questa:
+distributionUrl=https\://services.gradle.org/distributions/gradle-6.7-bin.zip
+Prima al posto di 6.7 c'era un'altra versione.
+3) siccome non mi aveva creato la directory src, ho seguito la guida al link:
+https://stackoverflow.com/questions/49710330/src-folder-not-created-when-creating-simple-intellij-java-gradle-project
+in particolare leggendo la seconda risposta: "As of January 2022 with Intellij IDEA 2021.1.3 and Gradle 6.8..."
+4) per andare sul sicuro, ho creato, dentro a src/main/java un nuovo package (nel mio
+caso university) con dentro le classi che mi servivano.
+5) ho creato una banalissima directory sotto main, ovvero src/main/proto, e qua dentro ci ho
+buttato tutti i miei file proto, tipo Student.proto.
+6) dopo aver scritto il message Student nel file Student.proto, ho notato che in quello che avevano
+fatto loro c'era un package all'inizio, prima del message. Allora ho fatto lo stesso: in cima
+al file Student.proto ho aggiunto un package creato da me, ovvero proto.classes (è il primo
+nome che mi è venuto in mente).
+7) ho fatto Build -> Rebuild Project, e mi ha creato correttamente, su
+build/generated/source/proto/main/java, il package proto.classes con la classe StudentOuterClass.
+8) nel file in cui volevo usare questa classe, che nel mio caso era UniversityServer, ho fatto l'import di
+"import proto.classes.StudentOuterClass.Student;". è il ".Student" finale che mi ha permesso di usare
+direttamente la classe Student nel file.
+9) yeah.
