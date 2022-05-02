@@ -235,6 +235,16 @@ Come funziona l'algoritmo? Normalmente, abbiamo il nostro automa di kripke e una
 Labelling Algorithm. Prende in unput un modello e una formula e restituisce un insieme di stati s in cui la formula \'e8 soddisfatta. Il nostro algoritmo prender\'e0 l'automa e lo etichetter\'e0. L'automa infatti ha stati con proposizioni. L'algoritmo insomma etichetta i vari stati con le formule minimali. Inoltre, possiamo restringere il set di operatori CTL all'insieme composto da falso, NOT, AND, AF, EU e EX.\par
 Prima dell'algoritmo, un'intuizione: guarda gli appunti.\par
 \par
+Lezione 16 - 02/05/2022\par
+Abbiamo visto come risolvere il problema di trovare il valore di verit\'e0 per una formula logica CTL. L'algoritmo prende in input una macchina, una formula, e restituisce l'insieme degli stati in cui la formula \'e8 soddisfatta. L'approccio usato consisteva nel prendere la formula, ridurla agli operatori minimali EU, EX e AF, poi prendere l'algoritmo di labeling che \'e8 stato usato per etichettare tutti gli stati del modello, e prendere infine gli stati etichettati con la formula di input. Il labeling viene fatto in automatico, da una macchina, quindi da un algoritmo. Tale algoritmo \'e8 codificato mediante un algoritmo di SAT che ci dice: dato un automa in input, l'algoritmo di sat restituisce l'insieme degli stati in cui la formula phi risulta vera. La prima cosa che fa \'e8 ridurre agli operatori minimali, e in alcuni casi ricorsivi applica sottoprocedure, come SAT_EU, SAT_EX, SAT_AF.\par
+Vediamo SAT_AF(phi)\par
+AF ci diceva: prendi la macchina, e se hai AF f da etichettare, etichetta innanzitutto gli stati che soddisfano la formula argomento "f", poi ricorsivamente, controlla tutti gli altri stati tali per cui tutti gli stati raggiungibili sono etichettati con AF. L'algoritmo fa proprio questo. Y \'e8 inizialmente l'insieme degli stati che soddisfano "f". X prende Y, e poi Y viene aggiornato con tutti gli stati che hanno, su tutti gli stati raggiungibili, la formula "f". Continua cos\'ec fino a che Y non smette di aggiornarsi. \par
+Vediamo ora SAT_EU(f1, f2)\par
+Di nuovo, la regola \'e8: prendi gli stati che soddisfano "f2", e etichettali. Poi prendi tutti gli stati etichettati (di gi\'e0) con "f1". Se esiste uno stato successore etichettato con E[f1 U f2], etichetta anche lui. Questo lo si fa con tre insiemi: W, X e Y. W \'e8 l'insieme degli stati etichettati con "f1". X \'e8 inizializzato con S. Y \'e8 inizializzato con quelli che soddisfano "f2". L'algoritmo continua finch\'e9 X = Y. Nella procedura iterativa, X prende Y, e poi Y viene ingrandito con tutti gli stati frutto dell'intersezione di W e l'insieme degli stati tali per cui esiste un successore che appartiene a Y. \par
+Vediammo SAT_EX(phi). L'algoritmo crea due insieme X e Y. X viene inizializzato come SAT(phi). Y invece \'e8 l'insieme degli stati tali per cui un suo successore sta in X, e restituisce Y. \par
+\par
+\par
+\par
 \par
 \par
 \fs44\par

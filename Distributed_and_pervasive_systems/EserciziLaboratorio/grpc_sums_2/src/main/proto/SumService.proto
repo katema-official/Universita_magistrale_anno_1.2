@@ -1,0 +1,19 @@
+syntax = "proto3";
+package it.generated.sumservice;
+
+message ClientRequestIntegersToSum{
+  int32 n1 = 1;
+  int32 n2 = 2;
+}
+
+message ServerResponseInteger{
+  int32 res = 1;
+}
+
+service SumService{
+  rpc oneToOneSum(ClientRequestIntegersToSum) returns (ServerResponseInteger);
+
+  rpc oneToStreamSum(ClientRequestIntegersToSum) returns (stream ServerResponseInteger);
+
+  rpc streamToStreamSum(stream ClientRequestIntegersToSum) returns (stream ServerResponseInteger);
+}

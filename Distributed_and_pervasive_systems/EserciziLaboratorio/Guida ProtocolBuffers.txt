@@ -22,3 +22,9 @@ build/generated/source/proto/main/java, il package proto.classes con la classe S
 "import proto.classes.StudentOuterClass.Student;". è il ".Student" finale che mi ha permesso di usare
 direttamente la classe Student nel file.
 9) yeah.
+
+Nel caso di grpc, invece, c'era un altro errore quando facevo la rebuild del progetto. L'ho risolto aggiungendo:
+
+implementation 'javax.annotation:javax.annotation-api:1.3.2'
+
+nelle dependencies {} del build.gradle
