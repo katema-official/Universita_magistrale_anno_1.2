@@ -1,0 +1,36 @@
+it/generated/sumservice/SumServiceOuterClass.java
+ it.generated.sumservice.SumServiceOuterClass
+ it.generated.sumservice.SumServiceOuterClass$ClientRequestIntegersToSum
+ it.generated.sumservice.SumServiceOuterClass$ClientRequestIntegersToSum$1
+ it.generated.sumservice.SumServiceOuterClass$ClientRequestIntegersToSum$Builder
+ it.generated.sumservice.SumServiceOuterClass$ClientRequestIntegersToSumOrBuilder
+ it.generated.sumservice.SumServiceOuterClass$ServerResponseInteger
+ it.generated.sumservice.SumServiceOuterClass$ServerResponseInteger$1
+ it.generated.sumservice.SumServiceOuterClass$ServerResponseInteger$Builder
+ it.generated.sumservice.SumServiceOuterClass$ServerResponseIntegerOrBuilder
+it/generated/sumservice/SumServiceGrpc.java
+ it.generated.sumservice.SumServiceGrpc
+ it.generated.sumservice.SumServiceGrpc$MethodHandlers
+ it.generated.sumservice.SumServiceGrpc$SumServiceBaseDescriptorSupplier
+ it.generated.sumservice.SumServiceGrpc$SumServiceBlockingStub
+ it.generated.sumservice.SumServiceGrpc$SumServiceFileDescriptorSupplier
+ it.generated.sumservice.SumServiceGrpc$SumServiceFutureStub
+ it.generated.sumservice.SumServiceGrpc$SumServiceImplBase
+ it.generated.sumservice.SumServiceGrpc$SumServiceMethodDescriptorSupplier
+ it.generated.sumservice.SumServiceGrpc$SumServiceStub
+alessio/Prova.java
+ alessio.Prova
+proto/classes/StudentOuterClass.java
+ proto.classes.StudentOuterClass
+ proto.classes.StudentOuterClass$Student
+ proto.classes.StudentOuterClass$Student$1
+ proto.classes.StudentOuterClass$Student$Builder
+ proto.classes.StudentOuterClass$Student$Exam
+ proto.classes.StudentOuterClass$Student$Exam$1
+ proto.classes.StudentOuterClass$Student$Exam$Builder
+ proto.classes.StudentOuterClass$Student$ExamOrBuilder
+ proto.classes.StudentOuterClass$Student$placeOfResidence
+ proto.classes.StudentOuterClass$Student$placeOfResidence$1
+ proto.classes.StudentOuterClass$Student$placeOfResidence$Builder
+ proto.classes.StudentOuterClass$Student$placeOfResidenceOrBuilder
+ proto.classes.StudentOuterClass$StudentOrBuilder

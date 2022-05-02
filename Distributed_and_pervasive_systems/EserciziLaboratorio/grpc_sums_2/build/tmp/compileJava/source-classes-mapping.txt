@@ -1,3 +1,9 @@
+davidepkg/Davide.java
+ davidepkg.Davide
+ davidepkg.Davide$Message
+ davidepkg.Davide$Message$1
+ davidepkg.Davide$Message$Builder
+ davidepkg.Davide$MessageOrBuilder
 it/generated/sumservice/SumServiceOuterClass.java
  it.generated.sumservice.SumServiceOuterClass
  it.generated.sumservice.SumServiceOuterClass$ClientRequestIntegersToSum
