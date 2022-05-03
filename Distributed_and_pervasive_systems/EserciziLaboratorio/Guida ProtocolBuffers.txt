@@ -28,3 +28,53 @@ Nel caso di grpc, invece, c'era un altro errore quando facevo la rebuild del pro
 implementation 'javax.annotation:javax.annotation-api:1.3.2'
 
 nelle dependencies {} del build.gradle
+
+
+
+Guida grpc (SumService nel caso generale verrà rimpiazzato dal nome del servizio scelto da te):
+1) definisci nel tuo file proto (SumService.proto nel mio caso) il formato dei messaggi e dei servizi.
+In cima inoltre scrivi syntax = "proto3"; , così, per sport. Also ricordati il nome del package.
+2) rebuilda il progetto e spera che non ti dia problemi.
+3) se hai definito il servizio SumService, scrivi una classe SumServiceImpl che estende la classe SumServiceImplBase
+(in questo caso, nel farlo, mi ha importato automaticamente nella classe it.generated.sumservice.SumServiceGrpc;)
+4) fai l'override dei vari metodi della classe (quelli che hai definito nel file proto). Ricorda che, in ogni caso,
+questi metodi hanno, come secondo argomento, uno "StreamObserver<MessaggioDiRitorno> responseObserver", su cui poi
+andranno chiamati dei metodi per mandare il messaggio al client.
+5) leggi l'oggetto marshallato mandato dal client come meglio credi e poi costruisci un MessaggioDiRitorno "m".
+6a) supponendo che il servizio sia one-to-one, fai, per mandare il messaggio al client:
+-responseObserver.onNext(m);	//passa la risposta nello stream
+-responseObserver.onCompleted();  //completa e chiude la comunicazione
+
+Lato client, per poter comunicare col servizio remoto, sappi innanzitutto che hai due modalità di comunicazione:
+-sincrona
+-asincrona
+Vediamole insieme
+SINCRONA
+1) definisci un metodo synchronousCall() (non è necessario, solo così si capisce meglio)
+2) dentro definisci innanzitutto un canale di comunicazione bloccante, specificando l'host e la porta del servizio
+richiesto. In codice: "ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080").usePlaintext().build();"
+"localhost:8080" può essere rimpiazzato ovviamente con qualunque nome di host e porta.
+3) ottieni la stub bloccante sul channel con: "SumServiceBlockingStub stub = SumServiceGrpc.newBlockingStub(channel);"
+4) crea la tua richiesta e mandala al client sullo specifico metodo richiesto.
+"ClientRequestIntegersToSum req = ClientRequestIntegersToSum.newBuilder().setN1(10).setN2(20).build();
+ ServerResponseInteger res = stub.oneToOneSum(req);"
+5) chiudi il channel: "channel.shutdown();"
+
+
+
+
+
+Lato server, invece, per istanziare il servizio:
+1) crea una classe MyServer (NON chiamarla Server: sennò hai conflitto quando usi la classe io.grpc.Server)
+2) lancia nel main (o in un metodo) un servizio con:
+"Server serverService = ServerBuilder.forPort(8080).addService(new SumServiceImpl()).build();
+ serverService.start();
+ serverService.awaitTermination();"
+Anche qui ovviamente puoi cambiare la porta.
+
+
+
+
+
+
+
