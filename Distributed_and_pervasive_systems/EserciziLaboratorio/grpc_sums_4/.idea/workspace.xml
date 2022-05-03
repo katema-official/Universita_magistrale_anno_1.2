@@ -5,76 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6af5495-dd25-4513-8068-1ac1383f005e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/davidepkg/Davide$Message$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/davidepkg/Davide$Message$Builder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/davidepkg/Davide$Message.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/davidepkg/Davide$MessageOrBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/davidepkg/Davide.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/extracted-include-protos/test/Davide.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/generated/source/proto/main/java/davidepkg/Davide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/build/resources/main/Davide.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_2/src/main/proto/Davide.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/7.1.1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/src/main/proto/Student.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../grpc_sums_3/src/main/proto/SumService.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/alessio/Prova.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/Student.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/SumService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/.gradle/6.7/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/alessio/SumServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/alessio/SumServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSum$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSum$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSum$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSum$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSum.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSumOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ClientRequestIntegersToSumOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseInteger$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseInteger$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseInteger$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseInteger$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseInteger.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseInteger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseIntegerOrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass$ServerResponseIntegerOrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/classes/java/main/it/generated/sumservice/SumServiceOuterClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/extracted-include-protos/test/SumService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/extracted-include-protos/test/SumService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/generated/source/proto/main/java/it/generated/sumservice/SumServiceOuterClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/generated/source/proto/main/java/it/generated/sumservice/SumServiceOuterClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/resources/main/SumService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/resources/main/SumService.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grpc_sums_2/src/main/java/alessio/SumServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../grpc_sums_2/src/main/java/alessio/SumServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../prova3/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../prova3/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +41,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -120,7 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1651489460102</updated>
       <workItem from="1651489462635" duration="690000" />
-      <workItem from="1651492712055" duration="540000" />
+      <workItem from="1651492712055" duration="1306000" />
     </task>
     <servers />
   </component>
