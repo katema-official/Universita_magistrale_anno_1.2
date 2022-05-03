@@ -18,8 +18,6 @@ it/generated/sumservice/SumServiceGrpc.java
  it.generated.sumservice.SumServiceGrpc$SumServiceImplBase
  it.generated.sumservice.SumServiceGrpc$SumServiceMethodDescriptorSupplier
  it.generated.sumservice.SumServiceGrpc$SumServiceStub
-alessio/Prova.java
- alessio.Prova
 proto/classes/StudentOuterClass.java
  proto.classes.StudentOuterClass
  proto.classes.StudentOuterClass$Student
@@ -34,3 +32,13 @@ proto/classes/StudentOuterClass.java
  proto.classes.StudentOuterClass$Student$placeOfResidence$Builder
  proto.classes.StudentOuterClass$Student$placeOfResidenceOrBuilder
  proto.classes.StudentOuterClass$StudentOrBuilder
+alessio/server/MyServer.java
+ alessio.server.MyServer
+alessio/server/SumServiceImpl.java
+ alessio.server.SumServiceImpl
+ alessio.server.SumServiceImpl$1
+alessio/client/Client.java
+ alessio.client.Client
+ alessio.client.Client$1
+ alessio.client.Client$2
+ alessio.client.Client$3

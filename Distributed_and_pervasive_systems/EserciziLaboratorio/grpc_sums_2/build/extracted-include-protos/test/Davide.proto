@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package davidepkg;
-
-message Message{
-  string name = 1;
-}

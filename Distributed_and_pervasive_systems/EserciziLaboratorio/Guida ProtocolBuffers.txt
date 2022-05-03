@@ -30,6 +30,8 @@ implementation 'javax.annotation:javax.annotation-api:1.3.2'
 nelle dependencies {} del build.gradle
 
 
+--------------------------------------------------------------------------------------------------------------------
+
 
 Guida grpc (SumService nel caso generale verrà rimpiazzato dal nome del servizio scelto da te):
 1) definisci nel tuo file proto (SumService.proto nel mio caso) il formato dei messaggi e dei servizi.
@@ -44,6 +46,11 @@ andranno chiamati dei metodi per mandare il messaggio al client.
 6a) supponendo che il servizio sia one-to-one, fai, per mandare il messaggio al client:
 -responseObserver.onNext(m);	//passa la risposta nello stream
 -responseObserver.onCompleted();  //completa e chiude la comunicazione
+6b) se invece è un servizio one-to-stream è la stessa cosa, solo che prima di chiamare onCompleted() chiamerai più volte onNext(m), ogni volta con un
+messaggio m diverso (o uguale, dipende dall'applicazione).
+6c) se invece è un servizio stream-to-stream, leggi il codice, ora non c'è ho voglia di spiegare anche quello lol.
+
+
 
 Lato client, per poter comunicare col servizio remoto, sappi innanzitutto che hai due modalità di comunicazione:
 -sincrona
@@ -52,15 +59,42 @@ Vediamole insieme
 SINCRONA
 1) definisci un metodo synchronousCall() (non è necessario, solo così si capisce meglio)
 2) dentro definisci innanzitutto un canale di comunicazione bloccante, specificando l'host e la porta del servizio
-richiesto. In codice: "ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080").usePlaintext().build();"
+richiesto. In codice: "[final] ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080").usePlaintext().build();"
 "localhost:8080" può essere rimpiazzato ovviamente con qualunque nome di host e porta.
 3) ottieni la stub bloccante sul channel con: "SumServiceBlockingStub stub = SumServiceGrpc.newBlockingStub(channel);"
 4) crea la tua richiesta e mandala al client sullo specifico metodo richiesto.
 "ClientRequestIntegersToSum req = ClientRequestIntegersToSum.newBuilder().setN1(10).setN2(20).build();
  ServerResponseInteger res = stub.oneToOneSum(req);"
 5) chiudi il channel: "channel.shutdown();"
+ASINCRONA
+1) definisci un metodo asynchronousStreamCall()
+2) di nuovo, definisci il channel: "[final] ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080").usePlaintext().build();"
+3) crea la stub, solo che stavolta sarà asincrona. Per farlo: "SumServiceStub stub = SumServiceGrpc.newStub(channel);"
+4) non resta altro che chiamare il servizio sulla stub. Tuttavia è necessario, dato che vogliamo ricevere uno stream di risposte,
+registrare una callback lato client. Per farlo:
 
+	stub.oneToStreamSum(req, new StreamObserver<ServerResponseInteger>(){
 
+            //"this handler takes care of each item received in the stream"
+            @Override
+            public void onNext(ServerResponseInteger value) {
+                System.out.println("n1 + n2 = " + value.getRes() );
+            }
+
+            //"if there are some errors, this method will be called"
+            @Override
+            public void onError(Throwable t) {
+                System.out.println("Error! " + t.getMessage());
+            }
+
+            //"When the stream is completed (the server called "onCompleted") just close the channel
+            @Override
+            public void onCompleted() {
+                channel.shutdownNow();
+            }
+        });
+
+        channel.awaitTermination(10, TimeUnit.SECONDS);
 
 
 
