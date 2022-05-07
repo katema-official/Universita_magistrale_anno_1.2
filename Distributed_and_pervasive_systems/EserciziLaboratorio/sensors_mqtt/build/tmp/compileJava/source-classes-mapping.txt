@@ -1,0 +1,12 @@
+sensors/Process2.java
+ sensors.Process2
+heater/Heater.java
+ heater.Heater
+ heater.Heater$1
+sensors/Process1.java
+ sensors.Process1
+sensors/Process3.java
+ sensors.Process3
+average/Controller.java
+ average.Controller
+ average.Controller$1
