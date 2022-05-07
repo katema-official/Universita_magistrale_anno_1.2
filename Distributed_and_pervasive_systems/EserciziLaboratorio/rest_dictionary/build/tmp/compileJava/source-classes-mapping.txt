@@ -1,0 +1,10 @@
+REST/services/StartServer.java
+ REST.services.StartServer
+REST/datas/Word.java
+ REST.datas.Word
+REST/services/DictionaryRestService.java
+ REST.services.DictionaryRestService
+REST/datas/Dictionary.java
+ REST.datas.Dictionary
+REST/client/MyClient.java
+ REST.client.MyClient

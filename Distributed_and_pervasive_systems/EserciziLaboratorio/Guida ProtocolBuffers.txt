@@ -30,6 +30,9 @@ implementation 'javax.annotation:javax.annotation-api:1.3.2'
 nelle dependencies {} del build.gradle
 
 
+Suggerimento di Andrea: "aggiungerei anche l'uso di "Invalidate Caches" nel caso in cui non vengano generate le classi/file"
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 
