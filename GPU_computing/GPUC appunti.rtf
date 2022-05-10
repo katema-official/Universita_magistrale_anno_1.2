@@ -88,7 +88,10 @@ Stream e concorrenza: ulteriore grado di concorrenza. La prossima la dedichiamo 
 Rivediamo il sincronismo nel codice GPU e CPU.\line Nella GPU, a livello di warp, l'esecuzione \'e8 effettivamente sincrona. Diversi warp vengono eseguiti con sovrapposizione arbitraria, anche se con syncthreads si pu\'f2 assicurare il giusto comportamento di un blocco di thread. Inoltre, i blocchi di thread sono distinti, e vengono eseguiti arbitrariamente. \par
 All'interno di uno stream, mettiamo una serie di operazioni CUDA (usando le API) che vengono eseguite in modo FIFO, in modo parallelo. \par
 \par
-\par
+Lezione 9 - 09/05/2022\par
+The Turn.\par
+Vediamo le librerie CUDA. cuBLAS, cuRAND e cuFFT. \par
+cudaSetMatrix: il terzultimo e il penultimo argomento sono il numero di righe delle due matrici (A e B, sorgente e destinazione). \par
 \par
 \par
 \par
