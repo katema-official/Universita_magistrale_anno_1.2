@@ -155,7 +155,15 @@ We were discussing about random variables. Our survey is almost over. We hust ne
 Let's now move to the universe of RV. Those variables produce real values. Let's talk about Uniformly Distributed (Continuous) Random Variables. A good way to visualize them is through their PDF (probability distribution function), where x = values the RV can assume, y = Probability that they do. In a UDRV, each value has the same probability of being drawn. The question now is the following: how do we generate values for this random variables? The Inverse Transform Method could help. The main principle behind this method is: I take the PMF but I don't use this straightly. I take the probability as x, i generate it randomly from a function that generates uniform values between 0 and 1, and I output the corrisponding value. Can I do the same here? In a certain sense, yes. I can move to the Cumulative Distribution Function by calculating the integral of my f(x).\par
 If you want the memoryless property, you have to use the exponential RV. \par
 Suppose you have multiple units (components) for a machine. Each of them has a lifetime modeled by an exponential random variable, each with different lambda parameters.\par
-phi for Normal RV: Repositioning by mu and rescaling by sigma^2.\line\line\line\line\line\line\line\line\line\par
+phi for Normal RV: Repositioning by mu and rescaling by sigma^2.\line\line\par
+Lezione 19 - 13/05/2022\par
+Let's continue the rider application.\par
+We were reasoning about the flow of actions between agents. We have observed that, differently from our previsous example, datas need to be exchanged using those messages. So, we need to finish setting up the structure of the model, and then focus on a specific part of the model: the working of the restaurant. Its logic right now is very simple.\par
+If an agent is moving and a message arrives, the message is lost.\par
+An "event" is something that is triggered at runtime. eventCustomerCall models a random call from a customer.\par
+add_customers() -> add_ "something in the main"\par
+To avoid lost messages, we can either add them to a queue or sending the messages just to the available riders.\par
+Sometimes, we need a model inside another model.\line\line\line\line\line\line\line\par
 \par
 }
  
