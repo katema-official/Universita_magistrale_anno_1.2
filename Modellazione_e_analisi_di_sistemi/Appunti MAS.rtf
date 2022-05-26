@@ -277,6 +277,10 @@ Gli invarianti di un modello ASM vengono garantiti nella simulazione, ma non nel
 se abbiamo una propriet\'e0 ef e vogliamo negarla per trovare un cammino, bisogna applicare la trasformazione not ef(a) = ag(not a)\par
 la safety \'e8 una sorta di invariante che deve valere.\par
 l'extend pu\'f2 essere sostituita da un dominio con un tit di elementi e una funzione ausiliaria booleana che ci dice quali elementi sono gi\'e0 stati considerati e quali no.\par
-\line\fs44\par
+\line Lezione 23 - 26/05/2022\par
+I valori delle variabili di supporto nei controesempi non sono particolarmente rilevanti.\line EF: per quanto girerai il sistema, troverai uno stato futuro in cui quella condizione \'e8 soddisfatta. Tuttavia, NuSMV controlla se una formula CTL \'e8 verificata in TUTTi gli stati iniziali del modello.\line Insomma, se abbiamo non determinismo, la EF pu\'f2 dare problemi. Comunque, basta riscrivere la EF(f) come AG(!f) = false.\par
+\par
+\par
+\fs44\par
 }
  

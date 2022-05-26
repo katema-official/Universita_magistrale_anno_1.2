@@ -1,0 +1,78 @@
+--file C:\Users\aless\Desktop\Universita_magistrale_anno_1.2\Modellazione_e_analisi_di_sistemi\eclipse_workspace_mas\esercizi\smv\producer_consumer_limited.smv
+-- options: flatten? true
+MODULE main
+	VAR
+		consumedProducts_CONSUMER_PROD1: boolean; --controlled
+		consumedProducts_CONSUMER_PROD2: boolean; --controlled
+		consumedProducts_CONSUMER_PROD3: boolean; --controlled
+		consumedProducts_CONSUMER_PROD4: boolean; --controlled
+		consumedProducts_CONSUMER_PROD5: boolean; --controlled
+		inBuffer: {PROD1, PROD2, PROD3, PROD4, PROD5, PRODUCTS_UNDEF}; --controlled
+		waiting_CONSUMER: boolean; --controlled
+		waiting_PRODUCER: boolean; --controlled
+		--declaration of choose variables
+		var_$prod3031_0: {PROD1, PROD2, PROD3, PROD4, PROD5};
+	CONSTANTS CONSUMER, CONSUMER_UNDEF, CONSUMER, PRODUCTS_UNDEF, PROD1, PROD2, PROD3, PROD4, PROD5, PRODUCER, PRODUCER_UNDEF, PRODUCER;
+	ASSIGN
+		init(consumedProducts_CONSUMER_PROD1) := FALSE;
+		init(consumedProducts_CONSUMER_PROD2) := FALSE;
+		init(consumedProducts_CONSUMER_PROD3) := FALSE;
+		init(consumedProducts_CONSUMER_PROD4) := FALSE;
+		init(consumedProducts_CONSUMER_PROD5) := FALSE;
+		init(inBuffer) := PRODUCTS_UNDEF;
+		init(waiting_CONSUMER) := TRUE;
+		init(waiting_PRODUCER) := FALSE;
+		next(consumedProducts_CONSUMER_PROD1) :=
+			case
+				((inBuffer = PROD1) & (!(waiting_CONSUMER) & (inBuffer != PRODUCTS_UNDEF))): TRUE;
+				TRUE: consumedProducts_CONSUMER_PROD1;
+			esac;
+		next(consumedProducts_CONSUMER_PROD2) :=
+			case
+				((inBuffer = PROD2) & (!(waiting_CONSUMER) & (inBuffer != PRODUCTS_UNDEF))): TRUE;
+				TRUE: consumedProducts_CONSUMER_PROD2;
+			esac;
+		next(consumedProducts_CONSUMER_PROD3) :=
+			case
+				((!(waiting_CONSUMER) & (inBuffer != PRODUCTS_UNDEF)) & (inBuffer = PROD3)): TRUE;
+				TRUE: consumedProducts_CONSUMER_PROD3;
+			esac;
+		next(consumedProducts_CONSUMER_PROD4) :=
+			case
+				((!(waiting_CONSUMER) & (inBuffer != PRODUCTS_UNDEF)) & (inBuffer = PROD4)): TRUE;
+				TRUE: consumedProducts_CONSUMER_PROD4;
+			esac;
+		next(consumedProducts_CONSUMER_PROD5) :=
+			case
+				((!(waiting_CONSUMER) & (inBuffer != PRODUCTS_UNDEF)) & (inBuffer = PROD5)): TRUE;
+				TRUE: consumedProducts_CONSUMER_PROD5;
+			esac;
+		next(inBuffer) :=
+			case
+				(!(waiting_PRODUCER) & !(consumedProducts_CONSUMER_PROD5) & (var_$prod3031_0 = PROD5)): PROD5;
+				(!(consumedProducts_CONSUMER_PROD1) & (var_$prod3031_0 = PROD1) & !(waiting_PRODUCER)): PROD1;
+				((var_$prod3031_0 = PROD4) & !(waiting_PRODUCER) & !(consumedProducts_CONSUMER_PROD4)): PROD4;
+				(!(waiting_CONSUMER)): PRODUCTS_UNDEF;
+				((var_$prod3031_0 = PROD3) & !(consumedProducts_CONSUMER_PROD3) & !(waiting_PRODUCER)): PROD3;
+				((var_$prod3031_0 = PROD2) & !(consumedProducts_CONSUMER_PROD2) & !(waiting_PRODUCER)): PROD2;
+				TRUE: inBuffer;
+			esac;
+		next(waiting_CONSUMER) :=
+			case
+				(!(waiting_PRODUCER)): FALSE;
+				(!(waiting_CONSUMER)): TRUE;
+				TRUE: waiting_CONSUMER;
+			esac;
+		next(waiting_PRODUCER) :=
+			case
+				(!(waiting_PRODUCER)): TRUE;
+				(!(waiting_CONSUMER)): FALSE;
+				TRUE: waiting_PRODUCER;
+			esac;
+	INVAR	(((var_$prod3031_0 = PROD2) & !(consumedProducts_CONSUMER_PROD2)) | (!(consumedProducts_CONSUMER_PROD1) & (var_$prod3031_0 = PROD1)) | ((var_$prod3031_0 = PROD3) & !(consumedProducts_CONSUMER_PROD3)) | ((var_$prod3031_0 = PROD4) & !(consumedProducts_CONSUMER_PROD4)) | (!(consumedProducts_CONSUMER_PROD5) & (var_$prod3031_0 = PROD5)) | (consumedProducts_CONSUMER_PROD5 & consumedProducts_CONSUMER_PROD1 & consumedProducts_CONSUMER_PROD2 & consumedProducts_CONSUMER_PROD3 & consumedProducts_CONSUMER_PROD4));
+--CTL properties
+CTLSPEC NAME ctl0 := AG((!(waiting_PRODUCER) -> !(inBuffer != PRODUCTS_UNDEF)));
+CTLSPEC NAME ctl1 := AG((!(waiting_CONSUMER) -> (inBuffer != PRODUCTS_UNDEF)));
+CTLSPEC NAME ctl2 := AG(!(consumedProducts_CONSUMER_inBuffer));
+CTLSPEC NAME ctl3 := AG((!(waiting_PRODUCER) xor !(waiting_CONSUMER)));
+CTLSPEC NAME ctl4 := AG(((inBuffer != PRODUCTS_UNDEF) -> AX(consumedProducts_CONSUMER_inBuffer)));
