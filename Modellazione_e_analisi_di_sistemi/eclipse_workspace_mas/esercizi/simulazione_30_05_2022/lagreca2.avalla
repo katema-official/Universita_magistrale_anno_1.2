@@ -1,0 +1,15 @@
+scenario lagreca2
+load lagreca.asm
+
+//il semaforo passa da verde a giallo
+exec freeSlots := 1;
+set enterCamera := STANDARD;
+set exitCamera := NONE;
+check semaphore = GREEN;
+step
+check freeSlots = 0;
+check semaphore = YELLOW;
+
+
+
+

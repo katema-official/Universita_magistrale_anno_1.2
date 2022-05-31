@@ -1,0 +1,27 @@
+scenario lagreca1
+load lagreca.asm
+
+
+
+exec freeSlots := 15;
+exec freeSlotsPremium := 5;
+set enterCamera := STANDARD;
+set exitCamera := NONE;
+step
+check freeSlots = 14;
+
+set enterCamera := PREMIUM;
+set exitCamera := NONE;
+step
+check freeSlotsPremium = 4;
+
+set enterCamera := NONE;
+set exitCamera := STANDARD;
+step
+check freeSlots = 15;
+
+set enterCamera := NONE;
+set exitCamera := PREMIUM;
+step
+check freeSlotsPremium = 5;
+

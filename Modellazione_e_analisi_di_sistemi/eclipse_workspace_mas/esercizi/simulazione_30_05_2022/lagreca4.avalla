@@ -1,0 +1,29 @@
+scenario lagreca4
+load lagreca.asm
+
+//passaggio del semaforo da rosso a verde
+exec freeSlots := 1;
+exec freeSlotsPremium := 1;
+check semaphore = GREEN;
+set enterCamera := STANDARD;
+set exitCamera := NONE;
+step
+
+check semaphore = YELLOW;
+check freeSlots = 0;
+check freeSlotsPremium = 1;
+set enterCamera := PREMIUM;
+set exitCamera := NONE;
+step
+
+check freeSlots = 0;
+check freeSlotsPremium = 0;
+check semaphore = RED;
+
+//se ne va un cliente standard, il semaforo diventa verde
+set enterCamera := NONE;
+set exitCamera := STANDARD;
+step
+check freeSlots = 1;
+check semaphore = GREEN;
+
