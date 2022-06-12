@@ -13,11 +13,12 @@ signature:
 	static controller: Controller
 	static conditioner: Conditioner
 	controlled userTemperature: UserTemperatureDomain -> Integer
-	controlled phase: Phase
-	controlled condState: CondStateDomain
+	monitored phase: Phase
+	controlled condState: CondStateDomain	//ON = per favore accenditi, condizionatore. OFF = spengiti
 	monitored newUserChoice: Integer
 	monitored temperature: Integer
 	monitored userPressedButton: Boolean
+	controlled conditionerState: Conditioner -> Boolean //true = acceso, false = spento
 	
 	monitored fault: Boolean
 
@@ -62,9 +63,24 @@ definitions:
 			r_day[]
 			r_night[]
 		endpar
+		
+	rule r_conditioner_turn_on =
+		if condState = ON then
+			conditionerState(self) := true
+		endif
+	
+	rule r_conditioner_turn_off =
+		if(condState = OFF) then
+			conditionerState(self) := false
+		endif
 	
 	rule r_conditioner =
-		skip
+		par
+			r_conditioner_turn_on[]
+			r_conditioner_turn_off[]
+		endpar
+		
+	
 	
 	// INVARIANTS
 
@@ -86,6 +102,7 @@ default init s0:
 															case MINIMUM: 28
 															endswitch
 															
+	function conditionerState($c in Conditioner) = false
 	
 	agent Controller:
 		r_controller[]

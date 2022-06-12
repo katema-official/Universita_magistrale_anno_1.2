@@ -24,7 +24,7 @@ definitions:
 
 	// FUNCTION DEFINITIONS
 	function processesInCritical =
-		size({$p in Process | processState($p) = CRITICAL : $p}) 
+		size({$p in Process | processState($p) = CRITICAL : $p})
 		
 	// RULE DEFINITIONS
 	rule r_idle =
