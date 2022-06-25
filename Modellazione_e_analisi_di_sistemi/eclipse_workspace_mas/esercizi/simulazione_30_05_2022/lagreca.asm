@@ -124,7 +124,7 @@ definitions:
 	//	endpar
 	
 	//main rule alternativa che gestisce esplicitamente il fatto che potrebbe, nello stesso stato,
-	//entrare e uscire una macchina. In questo caso, dò la priorità alla macchina che esce. Sarà
+	//entrare e uscire una macchina. In questo caso, do la priorità alla macchina che esce. Sarà
 	//il sistema, nello stato successivo, a dirmi che c'è ancora una macchina in attesa di entrare
 	main rule r_Main =
 		par

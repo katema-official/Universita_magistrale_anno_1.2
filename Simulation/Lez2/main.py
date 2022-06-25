@@ -83,18 +83,19 @@ def pharmacy(sim_time, daily_working_time, exp_prescriptions_day, exp_prescr_tim
             busy = False
             #now we can start working on a new prescription, if there is one
             if in_queue > 0:
-                e = Event()
-                e.type = "S"
-                e.time = current.time
+                #e = Event()
+                #e.type = "S"
+                #e.time = current.time
 
-                events.append(e)
+                #events.append(e)
 
                 in_queue = in_queue - 1
-    #return max(current.time, daily_working_time)
-    return current.time >= 510
+    return max(current.time, daily_working_time)
+    #return current.time >= 510
 
 
 if __name__ == '__main__':
     t = [pharmacy(600, 480, 32, 10, 4) for i in range(1000)] #circa 490
+    print(t)
     media = numpy.mean(t)
     print("Closing time: ", media)

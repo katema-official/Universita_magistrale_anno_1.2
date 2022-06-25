@@ -1,0 +1,12 @@
+scenario scenario1_1
+load lagreca990973_0.asm
+
+set user_choice := 4;
+exec 
+	par
+		ownedMoneyUser := 5
+		ownedMoneyPc := 5
+	endpar;
+
+exec r_playATurn[user_choice, 2];
+check ownedMoneyUser = 6;
