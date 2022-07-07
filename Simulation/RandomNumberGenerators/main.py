@@ -121,7 +121,7 @@ if __name__ == "__main__":
     s3 = congruential_generator(seed=10, n=1000)
     s4 = congruential_generator(seed=1001, n=1000)  # not a coincidence!
 
-    if True:
+    if False:
         print(s1)
         print(s2)
         print(s3)
@@ -151,3 +151,39 @@ if __name__ == "__main__":
 
     my_sequence = [1,20,3,22,5,0,7,2,9,4,11,6,13,8,15,10,17,12,19,14,21,16,23,18]
     ripley_test(my_sequence)
+
+
+    s5 = congruential_generator(a = 7**5, c = 0, m = (2**31-1), seed = 1, n = 1000)
+    s6 = congruential_generator(a = 65, c = 1, m = 2048, seed = 623, n = 1000)
+    if False:
+        plt.scatter(q, s5)
+        plt.show()
+        plt.scatter(q, s6)
+        plt.show()
+        ripley_test(s5)
+        ripley_test(s6)
+
+
+
+    #check correlation
+    import numpy
+    print(numpy.corrcoef(v1, v1[1:len(v1)] + [v1[0]]))
+    print(numpy.corrcoef(v2, v2[1:len(v2)] + [v2[0]]))
+    print(numpy.corrcoef(v3, v3[1:len(v3)] + [v3[0]]))
+
+    print(numpy.corrcoef(s1, s1[1:len(s1)] + [s1[0]]))
+    print(numpy.corrcoef(s2, s2[1:len(s2)] + [s2[0]]))
+    print(numpy.corrcoef(s6, s6[1:len(s6)] + [s6[0]]))
+
+
+    def check_totally_correlation(seq):
+
+        corrs = [numpy.corrcoef(seq, seq[i:] + seq[:i])[0][1] for i in range(1,len(seq))]
+        plt.plot(list(range(999)), corrs)
+        plt.show()
+
+    check_totally_correlation(s2)
+    check_totally_correlation(s3)
+    check_totally_correlation(s4)
+    check_totally_correlation(s5)
+    check_totally_correlation(s6)
